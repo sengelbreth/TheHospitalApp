@@ -12,9 +12,9 @@ class Patient(models.Model):
     Adresse = models.CharField(max_length=200)
     Phone = models.IntegerField
     
-    Doctor = models.ForeignKey('Doctor', on_delete=models.SET_NULL, null=True)
-    Records = models.ForeignKey('Records', on_delete=models.SET_NULL, null=True)
   
+    Records = models.ForeignKey('Records', on_delete=models.SET_NULL, null=True)
+    Doctor = models.ForeignKey('Doctor', on_delete=models.SET_NULL, null=True)
 
     
     def __str__(self):
@@ -32,8 +32,8 @@ class Doctor(models.Model):
     Name = models.CharField(max_length=200)
     LastName = models.CharField(max_length=200)
     Field = models.CharField(max_length=200, help_text='field of work for the Doctor')
-    Patient = models.ForeignKey('Patient', on_delete=models.SET_NULL, null=True)
-    Records = models.ForeignKey('Records', on_delete=models.SET_NULL, null=True)
+    
+
     
     def __str__(self):
         """String for representing the Model object."""
@@ -47,7 +47,6 @@ class Doctor(models.Model):
 class Records(models.Model): 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     History = models.CharField(max_length=1000)
-   
-    Doctor = models.ForeignKey('Doctor', on_delete=models.SET_NULL, null=True)
-    Patient = models.ForeignKey('Patient', on_delete=models.SET_NULL, null=True)
+
+    
     
